@@ -19,13 +19,15 @@ SOURCES += \
     bubblesort.cpp \
     main.cpp \
     mainwindow.cpp \
-    mergesort.cpp
+    mergesort.cpp \
+    packagefactory.cpp
 
 HEADERS += \
     AbstractAlgorithm.h \
     bubblesort.h \
     mainwindow.h \
-    mergesort.h
+    mergesort.h \
+    packagefactory.h
 
 FORMS += \
     mainwindow.ui
