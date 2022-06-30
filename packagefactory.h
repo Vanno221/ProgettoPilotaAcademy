@@ -4,7 +4,9 @@
 #include "bubblesort.h"
 #include "AbstractAlgorithm.h"
 #include <QString>
-class PackageFactory
+#include "AbstractPackageFactory.h"
+
+class PackageFactory : public AbstractPackageFactory
 {
 public:
     PackageFactory();

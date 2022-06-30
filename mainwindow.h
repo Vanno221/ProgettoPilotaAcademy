@@ -22,7 +22,7 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    MainWindow(PackageFactory *factory, QWidget *parent = nullptr);
+    MainWindow(AbstractPackageFactory *factory, QWidget *parent = nullptr);
     ~MainWindow();
 
 public slots:
@@ -33,7 +33,7 @@ private:
 
     Ui::MainWindow *ui;
 
-    PackageFactory *factory;
+    AbstractPackageFactory *factory;
 
     QRadioButton *ui_radioButton_Easy;
     QRadioButton *ui_radioButton_Medium;

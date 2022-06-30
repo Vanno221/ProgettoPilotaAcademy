@@ -24,6 +24,7 @@ SOURCES += \
 
 HEADERS += \
     AbstractAlgorithm.h \
+    AbstractPackageFactory.h \
     bubblesort.h \
     mainwindow.h \
     mergesort.h \

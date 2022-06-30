@@ -10,6 +10,7 @@ int main(int argc, char *argv[])
 
     PackageFactory* factory = new PackageFactory();
     MainWindow w (factory);
+
     /*
     AbstractAlgorithm* test = factory->createPackage("Merge");
     AbstractAlgorithm* test2 = factory->createPackage("Quick");

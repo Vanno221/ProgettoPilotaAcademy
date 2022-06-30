@@ -28,18 +28,19 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_pushButton_StartThread_clicked()
 {
-    QThread myThread;
+    QThread *myThread = new QThread();
     AbstractAlgorithm* package = factory->createPackage("MergeSort");
 
-    package->moveToThread(&myThread);
+    package->moveToThread(myThread);
 
     //connect(ui_pushButton_StartThread,&QPushButton::clicked,package,&AbstractAlgorithm::sorting);
-    connect(&myThread, &QThread::started, package, &AbstractAlgorithm::sorting);
+
+    connect(myThread, &QThread::started, package, &AbstractAlgorithm::sorting);
 
     //SINTASSI: OGGETTO SENDER, METODO DEL SENDER (SIGNALS), OGGETTO A CUI VOGLIAMO PASSARE L'INFORMAZIONE, METODO DELLO SLOT
     connect(package, &AbstractAlgorithm::result,this,&MainWindow::on_progressBar_Thread_valueChanged);
 
-    myThread.start();
+    myThread->start();
     //package->sorting();
 }
 
