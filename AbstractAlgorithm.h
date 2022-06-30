@@ -16,9 +16,9 @@ public:
 
 public slots:
     virtual void sorting() = 0;
-
 signals:
     void result(int number);
+    void sortingFinished();
 
 };
 
