@@ -13,7 +13,13 @@ public:
     virtual ~AbstractAlgorithm() = default;
     virtual int getDifficulty() = 0;
     virtual void setDifficulty(int difficulty) = 0;
+
+public slots:
     virtual void sorting() = 0;
+
+signals:
+    void result(int number);
+
 };
 
 #endif // ABSTRACTALGORITHM_H

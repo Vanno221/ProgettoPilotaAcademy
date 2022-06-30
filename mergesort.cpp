@@ -6,7 +6,12 @@ MergeSort::MergeSort()
 }
 
 void MergeSort::sorting(){
-   //facccio il sorting
+
+    for(int i = 0; i < 34; i++){
+     int z = 3;
+
+     emit result(z);
+    }
 }
 
 int MergeSort::getDifficulty(){

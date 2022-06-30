@@ -47,21 +47,21 @@
       </property>
       <layout class="QGridLayout" name="gridLayout_3">
        <item row="0" column="0">
-        <widget class="QRadioButton" name="radioButton">
+        <widget class="QRadioButton" name="radioButton_Easy">
          <property name="text">
           <string>Easy</string>
          </property>
         </widget>
        </item>
        <item row="1" column="0">
-        <widget class="QRadioButton" name="radioButton_2">
+        <widget class="QRadioButton" name="radioButton_Medium">
          <property name="text">
           <string>Medium</string>
          </property>
         </widget>
        </item>
        <item row="2" column="0">
-        <widget class="QRadioButton" name="radioButton_3">
+        <widget class="QRadioButton" name="radioButton_Hard">
          <property name="text">
           <string>Hard</string>
          </property>
@@ -90,7 +90,15 @@
             <height>125</height>
            </rect>
           </property>
-          <layout class="QGridLayout" name="gridLayout_2"/>
+          <layout class="QGridLayout" name="gridLayout_2">
+           <item row="0" column="0">
+            <widget class="QProgressBar" name="progressBar_Thread">
+             <property name="value">
+              <number>24</number>
+             </property>
+            </widget>
+           </item>
+          </layout>
          </widget>
         </widget>
        </item>
@@ -104,7 +112,7 @@
       </property>
       <layout class="QGridLayout" name="gridLayout_5">
        <item row="0" column="0">
-        <widget class="QComboBox" name="comboBox">
+        <widget class="QComboBox" name="comboBox_Algorithm">
          <item>
           <property name="text">
            <string>BubbleSort</string>
@@ -127,7 +135,7 @@
       </property>
       <layout class="QGridLayout" name="gridLayout_8">
        <item row="2" column="0">
-        <widget class="QPushButton" name="pushButton">
+        <widget class="QPushButton" name="pushButton_StartThread">
          <property name="text">
           <string>Start</string>
          </property>
@@ -151,5 +159,22 @@
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>pushButton_StartThread</sender>
+   <signal>clicked()</signal>
+   <receiver>textEdit</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>696</x>
+     <y>270</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>498</x>
+     <y>419</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>
