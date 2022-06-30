@@ -2,7 +2,7 @@
 #include "ui_mainwindow.h"
 #include "mergesort.h"
 
-MainWindow::MainWindow(PackageFactory *factoryMain, QWidget *parent)
+MainWindow::MainWindow(AbstractPackageFactory *factoryMain, QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
     , factory(factoryMain)
@@ -29,6 +29,7 @@ MainWindow::~MainWindow()
 void MainWindow::on_pushButton_StartThread_clicked()
 {
     QThread *myThread = new QThread();
+
     AbstractAlgorithm* package = factory->createPackage("MergeSort");
 
     package->moveToThread(myThread);
@@ -42,6 +43,7 @@ void MainWindow::on_pushButton_StartThread_clicked()
 
     myThread->start();
     //package->sorting();
+
 }
 
 void MainWindow::on_progressBar_Thread_valueChanged(int value)
