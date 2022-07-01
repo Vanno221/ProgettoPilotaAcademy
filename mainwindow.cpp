@@ -7,21 +7,25 @@ MainWindow::MainWindow(AbstractPackageFactory *factoryMain, QWidget *parent)
     , ui(new Ui::MainWindow)
     , factory(factoryMain)
 {
-
     ui->setupUi(this);
 
     //SINTASSI: OGGETTO SENDER, METODO DEL SENDER (SIGNALS), OGGETTO A CUI VOGLIAMO PASSARE L'INFORMAZIONE, METODO DELLO SLOT
     connect(this, &MainWindow::pushDataFactory, factory, &AbstractPackageFactory::createPackage);
 
-    ui_radioButton_Easy = findChild<QRadioButton*>("radioButton_Easy");
-    ui_radioButton_Medium = findChild<QRadioButton*>("radioButton_Medium");
-    ui_radioButton_Hard = findChild<QRadioButton*>("radioButton_Hard");
+   /*
+   QVBoxLayout* layout = qobject_cast<QVBoxLayout*>(ui->scrollAreaWidgetContents_2->layout());
 
-    ui_comboBox_Algorithm = findChild<QComboBox*>("comboBox_Algorithm");
+   QString labelProgress = tr("Progress #%1").arg(layout->count());
 
-    ui_pushButton_StartThread = findChild<QPushButton*>("pushButton_StartThread");
+   QProgressBar *progressThread = new QProgressBar;
 
-    ui_progressBar_Thread = findChild<QProgressBar*>("progressBar_Thread");
+   QVBoxLayout *layout = new QVBoxLayout(progressThread);
+
+   ui->scrollArea->setWidget(progressThread);
+   ui->scrollArea->setWidgetResizable(true);
+
+   layout->addStretch();
+    */
 }
 
 MainWindow::~MainWindow()
@@ -43,5 +47,5 @@ void MainWindow::on_pushButton_StartThread_clicked()
 
 void MainWindow::on_progressBar_Thread_valueChanged(int value)
 {
-    ui_progressBar_Thread->setValue(ui_progressBar_Thread->value() + value);
+    //ui->progressBar_Thread->setValue(ui->progressBar_Thread->value() + value);
 }

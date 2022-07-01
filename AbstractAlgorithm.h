@@ -23,8 +23,6 @@ signals:
     void stopSorting(bool = false);
 
     void result(int number);
-
-
 };
 
 #endif // ABSTRACTALGORITHM_H

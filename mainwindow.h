@@ -5,6 +5,8 @@
 #include <QThread>
 #include <QProgressBar>
 #include <QPushButton>
+#include <QScrollArea>
+#include <QGridLayout>
 
 #include "packagefactory.h"
 
@@ -36,19 +38,7 @@ signals:
 private:
 
     Ui::MainWindow *ui;
-
     AbstractPackageFactory *factory;
-
-    QRadioButton *ui_radioButton_Easy;
-    QRadioButton *ui_radioButton_Medium;
-    QRadioButton *ui_radioButton_Hard;
-
-    QPushButton *ui_pushButton_StartThread;
-
-    QComboBox *ui_comboBox_Algorithm;
-
-    QProgressBar *ui_progressBar_Thread;
-
 
 };
 #endif // MAINWINDOW_H
