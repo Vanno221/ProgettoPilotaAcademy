@@ -10,6 +10,7 @@ MainWindow::MainWindow(AbstractPackageFactory *factoryMain, QWidget *parent)
 
     ui->setupUi(this);
 
+    //SINTASSI: OGGETTO SENDER, METODO DEL SENDER (SIGNALS), OGGETTO A CUI VOGLIAMO PASSARE L'INFORMAZIONE, METODO DELLO SLOT
     connect(this, &MainWindow::pushDataFactory, factory, &AbstractPackageFactory::createPackage);
 
     ui_radioButton_Easy = findChild<QRadioButton*>("radioButton_Easy");
@@ -30,20 +31,6 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_pushButton_StartThread_clicked()
 {
-    /*
-
-
-
-    //SINTASSI: OGGETTO SENDER, METODO DEL SENDER (SIGNALS), OGGETTO A CUI VOGLIAMO PASSARE L'INFORMAZIONE, METODO DELLO SLOT
-
-
-    connect(package, &AbstractAlgorithm::result, this,&MainWindow::on_progressBar_Thread_valueChanged);
-
-
-    myThread->start();
-
-    */
-
     const auto radioButtonList = ui->groupBox->findChildren<QRadioButton*>();
 
     for(auto&& singleBox : radioButtonList)

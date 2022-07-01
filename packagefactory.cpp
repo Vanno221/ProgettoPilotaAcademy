@@ -16,19 +16,20 @@ AbstractAlgorithm* PackageFactory::createPackage(int selectionAlgorithm, int dif
         case 0:
             package = new BubbleSort(difficulty);
             break;
+
         case 1:
             package = new MergeSort(difficulty);
             break;
 
         default:
             qDebug("Nessun Oggetto creato");
+            break;
     }
 
     QThread *myThread = new QThread();
     package->moveToThread(myThread);
 
     connect(myThread, &QThread::started, package, &AbstractAlgorithm::sorting);
-
     connect(package, &AbstractAlgorithm::stopSorting, package, &AbstractAlgorithm::deleteLater);
 
     //myThread->start();
