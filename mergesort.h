@@ -9,6 +9,9 @@ public:
     int getDifficulty() override;
     void setDifficulty(int difficulty) override;
 
+    static int min(int a, int b);
+    void merge(int data[],int p, int q,int r);
+
 public slots:
     void sorting() override;
 

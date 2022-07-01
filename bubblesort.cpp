@@ -31,7 +31,7 @@ void BubbleSort::sorting(){
         int swapped = 0;
         for(int i=0; i< length-1; i++) {
             if (array[i] > array[i+1]) {
-                BubbleSort::swap(&array[i], &array[i+1]) ;
+                std::swap(array[i], array[i+1]);
                 swapped = 1;
             }
         }
@@ -53,9 +53,3 @@ void BubbleSort::setDifficulty(int difficulty){
 
 BubbleSort::BubbleSort(int difficulty) : difficulty(difficulty)
 {}
-
-void BubbleSort::swap(int *a, int *b){
-    int temp = *a;
-    *a = *b;
-    *b = temp;
-}

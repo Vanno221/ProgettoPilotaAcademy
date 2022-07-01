@@ -1,13 +1,13 @@
 #ifndef BUBBLESORT_H
 #define BUBBLESORT_H
 #include "AbstractAlgorithm.h"
+#include <iostream>
 
 class BubbleSort : public AbstractAlgorithm
 {
 public:
 
     BubbleSort(int difficulty);
-    void swap(int *a, int *b);
     void sorting() override;
     int getDifficulty() override;
     void setDifficulty(int difficulty) override;
