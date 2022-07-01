@@ -12,5 +12,6 @@ void BubbleSort::setDifficulty(int difficulty){
     this->difficulty = difficulty;
 }
 
-BubbleSort::BubbleSort(){}
+BubbleSort::BubbleSort(int difficulty) : difficulty(difficulty)
+{}
 

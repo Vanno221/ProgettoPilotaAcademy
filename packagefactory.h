@@ -5,12 +5,15 @@
 #include "AbstractAlgorithm.h"
 #include <QString>
 #include "AbstractPackageFactory.h"
+#include <QDebug>
 
 class PackageFactory : public AbstractPackageFactory
 {
+
 public:
     PackageFactory();
-    AbstractAlgorithm* createPackage(QString name);
+    AbstractAlgorithm* createPackage(QString name) override;
+    void test(int value) override;
 };
 
 #endif // PACKAGEFACTORY_H

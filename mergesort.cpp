@@ -1,6 +1,6 @@
 #include "mergesort.h"
 
-MergeSort::MergeSort()
+MergeSort::MergeSort(int difficulty) : difficulty(difficulty)
 {
 
 }

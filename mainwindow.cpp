@@ -28,11 +28,18 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_pushButton_StartThread_clicked()
 {
+
+
+    /*
     QThread *myThread = new QThread();
 
     AbstractAlgorithm* package = factory->createPackage("MergeSort");
 
     package->moveToThread(myThread);
+
+    connect(myThread, &QThread::started, package, &AbstractAlgorithm::sorting);
+    connect(package, &AbstractAlgorithm::result, this,&MainWindow::on_progressBar_Thread_valueChanged);
+    connect(package, &AbstractAlgorithm::sortingFinished, package, &AbstractAlgorithm::deleteLater);
 
     //connect(ui_pushButton_StartThread,&QPushButton::clicked,package,&AbstractAlgorithm::sorting);
 
@@ -43,7 +50,20 @@ void MainWindow::on_pushButton_StartThread_clicked()
 
     myThread->start();
     //package->sorting();
+    */
 
+    connect(ui->pushButton_StartThread, &QPushButton::clicked, factory, &AbstractPackageFactory::test);
+
+    const auto radioButtonList = ui->groupBox->findChildren<QRadioButton*>();
+    for(auto&& singleBox : radioButtonList)
+    {
+
+        if (singleBox->isChecked() == true)
+            qDebug() << "Hai scelto: " << ui->comboBox_Algorithm->currentText() << singleBox->text();
+
+    }
+
+    qDebug() << ui->progressBar_Thread->value();
 }
 
 void MainWindow::on_progressBar_Thread_valueChanged(int value)
