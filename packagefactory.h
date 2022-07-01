@@ -12,8 +12,7 @@ class PackageFactory : public AbstractPackageFactory
 
 public:
     PackageFactory();
-    AbstractAlgorithm* createPackage(QString name) override;
-    void test(int value) override;
+    AbstractAlgorithm* createPackage(int selectionAlgorithm, int difficulty) override;
 };
 
 #endif // PACKAGEFACTORY_H

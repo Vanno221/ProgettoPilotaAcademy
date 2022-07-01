@@ -10,6 +10,8 @@ MainWindow::MainWindow(AbstractPackageFactory *factoryMain, QWidget *parent)
 
     ui->setupUi(this);
 
+    connect(this, &MainWindow::pushDataFactory, factory, &AbstractPackageFactory::createPackage);
+
     ui_radioButton_Easy = findChild<QRadioButton*>("radioButton_Easy");
     ui_radioButton_Medium = findChild<QRadioButton*>("radioButton_Medium");
     ui_radioButton_Hard = findChild<QRadioButton*>("radioButton_Hard");
@@ -28,42 +30,28 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_pushButton_StartThread_clicked()
 {
-
-
     /*
-    QThread *myThread = new QThread();
 
-    AbstractAlgorithm* package = factory->createPackage("MergeSort");
 
-    package->moveToThread(myThread);
-
-    connect(myThread, &QThread::started, package, &AbstractAlgorithm::sorting);
-    connect(package, &AbstractAlgorithm::result, this,&MainWindow::on_progressBar_Thread_valueChanged);
-    connect(package, &AbstractAlgorithm::sortingFinished, package, &AbstractAlgorithm::deleteLater);
-
-    //connect(ui_pushButton_StartThread,&QPushButton::clicked,package,&AbstractAlgorithm::sorting);
-
-    connect(myThread, &QThread::started, package, &AbstractAlgorithm::sorting);
 
     //SINTASSI: OGGETTO SENDER, METODO DEL SENDER (SIGNALS), OGGETTO A CUI VOGLIAMO PASSARE L'INFORMAZIONE, METODO DELLO SLOT
-    connect(package, &AbstractAlgorithm::result,this,&MainWindow::on_progressBar_Thread_valueChanged);
+
+
+    connect(package, &AbstractAlgorithm::result, this,&MainWindow::on_progressBar_Thread_valueChanged);
+
 
     myThread->start();
-    //package->sorting();
+
     */
 
-    connect(ui->pushButton_StartThread, &QPushButton::clicked, factory, &AbstractPackageFactory::test);
-
     const auto radioButtonList = ui->groupBox->findChildren<QRadioButton*>();
+
     for(auto&& singleBox : radioButtonList)
     {
-
         if (singleBox->isChecked() == true)
-            qDebug() << "Hai scelto: " << ui->comboBox_Algorithm->currentText() << singleBox->text();
-
+            emit pushDataFactory(ui->comboBox_Algorithm->currentIndex() , radioButtonList.indexOf(singleBox));
     }
 
-    qDebug() << ui->progressBar_Thread->value();
 }
 
 void MainWindow::on_progressBar_Thread_valueChanged(int value)

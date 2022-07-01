@@ -5,12 +5,34 @@ PackageFactory::PackageFactory()
 
 }
 
-AbstractAlgorithm* PackageFactory::createPackage(QString name){
-    if (QString::compare(name, "MergeSort", Qt::CaseInsensitive) == 0){return new MergeSort(1);}
-    if (QString::compare(name, "BubbleSort", Qt::CaseInsensitive) == 0){return new BubbleSort(1);}
+AbstractAlgorithm* PackageFactory::createPackage(int selectionAlgorithm, int difficulty){
+
+    qDebug() << selectionAlgorithm << difficulty;
+
+    AbstractAlgorithm* package = nullptr;
+
+    switch (selectionAlgorithm) {
+
+        case 0:
+            package = new BubbleSort(difficulty);
+            break;
+        case 1:
+            package = new MergeSort(difficulty);
+            break;
+
+        default:
+            qDebug("Nessun Oggetto creato");
+    }
+
+    QThread *myThread = new QThread();
+    package->moveToThread(myThread);
+
+    connect(myThread, &QThread::started, package, &AbstractAlgorithm::sorting);
+
+    connect(package, &AbstractAlgorithm::stopSorting, package, &AbstractAlgorithm::deleteLater);
+
+    //myThread->start();
+
     return nullptr;
 }
 
-void PackageFactory::test(int value){
-    qDebug() << value;
-}

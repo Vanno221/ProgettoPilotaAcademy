@@ -18,7 +18,12 @@ public slots:
     virtual void sorting() = 0;
 
 signals:
+    void startSorting(bool = false);
+    void isRunningSorting(bool = false);
+    void stopSorting(bool = false);
+
     void result(int number);
+
 
 };
 
