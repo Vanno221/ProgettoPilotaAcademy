@@ -7,8 +7,10 @@
 #include <QPushButton>
 #include <QScrollArea>
 #include <QGridLayout>
+#include <QLabel>
 
 #include "packagefactory.h"
+#include "AbstractAlgorithm.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
