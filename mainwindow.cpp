@@ -25,7 +25,7 @@ MainWindow::MainWindow(AbstractPackageFactory *factoryMain, QWidget *parent)
    ui->scrollArea->setWidgetResizable(true);
 
    layout->addStretch();
-    */
+   */
 }
 
 MainWindow::~MainWindow()
@@ -43,9 +43,8 @@ void MainWindow::on_pushButton_StartThread_clicked()
             emit pushDataFactory(ui->comboBox_Algorithm->currentIndex() , radioButtonList.indexOf(singleBox));
     }
 
+    QProgressBar *progressThread = new QProgressBar();
+    ui->scrollAreaWidgetContents->layout()->addWidget(progressThread);
+
 }
 
-void MainWindow::on_progressBar_Thread_valueChanged(int value)
-{
-    //ui->progressBar_Thread->setValue(ui->progressBar_Thread->value() + value);
-}

@@ -25,15 +25,18 @@ AbstractAlgorithm* PackageFactory::createPackage(int selectionAlgorithm, int dif
             qDebug("Nessun Oggetto creato");
             break;
     }
-
+    /*
     QThread *myThread = new QThread();
     package->moveToThread(myThread);
 
     connect(myThread, &QThread::started, package, &AbstractAlgorithm::sorting);
     connect(package, &AbstractAlgorithm::stopSorting, package, &AbstractAlgorithm::deleteLater);
 
+    //Deallocare myThread (?)
+
     //myThread->start();
 
     return nullptr;
+    */
 }
 

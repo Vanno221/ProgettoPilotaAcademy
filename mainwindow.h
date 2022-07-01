@@ -29,7 +29,6 @@ public:
 
 public slots:
     void on_pushButton_StartThread_clicked();
-    void on_progressBar_Thread_valueChanged(int value); 
 
 
 signals:
