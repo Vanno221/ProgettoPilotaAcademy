@@ -1,6 +1,8 @@
 #include "mergesort.h"
 
-MergeSort::MergeSort(int difficulty) : difficulty(difficulty){}
+MergeSort::MergeSort(int difficulty, int id) : difficulty(difficulty){
+   this->id = id;
+}
 
 int MergeSort::getDifficulty(){
     return this->difficulty;
@@ -56,7 +58,9 @@ void MergeSort::merge(int data[],int p, int q,int r)
 }
 
 void MergeSort::sorting(){
-        emit statusThread("Start Thread");
+
+        QString id = QString::number(this->id);
+        emit statusThread("Start Thread: " + id);
         int *array;
         int size;
         double progress = 0.0;
@@ -86,7 +90,7 @@ void MergeSort::sorting(){
 
 
        // faccio la merge dei due storro array
-       emit statusThread("Thread is Running");
+       emit statusThread("Running Thread: " + id);
 
        for (curr_size=1; curr_size<=n-1; curr_size = 2*curr_size)
        {
@@ -105,7 +109,7 @@ void MergeSort::sorting(){
 
        //if (progress < 100)
          //  progress = 100 - progress;
-       emit statusThread("Thread is terminated");
+       emit statusThread("Terminated Thread: " + id);
        emit result(progress);
        emit stopSorting();
        qDebug() << progress;

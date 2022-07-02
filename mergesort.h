@@ -5,7 +5,7 @@
 class MergeSort : public AbstractAlgorithm
 {
 public:
-    MergeSort(int difficulty);
+    MergeSort(int difficulty, int id);
     int getDifficulty() override;
     void setDifficulty(int difficulty) override;
 
@@ -17,6 +17,7 @@ public slots:
 
 private:
     int difficulty;
+    int id;
 };
 
 #endif // MERGESORT_H

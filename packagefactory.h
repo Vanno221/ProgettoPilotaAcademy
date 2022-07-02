@@ -9,9 +9,9 @@
 
 class PackageFactory : public AbstractPackageFactory
 {
+private:
 
 public:
-
     PackageFactory();
     AbstractAlgorithm* createPackage(int selectionAlgorithm, int difficulty) override;
     void updateProgress(int value) override;

@@ -7,18 +7,17 @@ PackageFactory::PackageFactory()
 
 
 AbstractAlgorithm* PackageFactory::createPackage(int selectionAlgorithm, int difficulty){
-
-
+    static int id{0};
     AbstractAlgorithm* package = nullptr;
 
     switch (selectionAlgorithm) {
 
         case 0:
-            package = new BubbleSort(difficulty);
+            package = new BubbleSort(difficulty, id++);
             break;
 
         case 1:
-            package = new MergeSort(difficulty);
+            package = new MergeSort(difficulty, id++);
             break;
 
         default:

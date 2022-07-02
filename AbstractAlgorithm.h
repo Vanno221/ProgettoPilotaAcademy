@@ -10,6 +10,7 @@ class AbstractAlgorithm : public QObject{
 
 private:
     int difficulty;
+    int id;
 
 public:
     virtual ~AbstractAlgorithm() = default;
@@ -25,5 +26,6 @@ signals:
     void result(int number);
     void stopSorting();
 };
+
 
 #endif // ABSTRACTALGORITHM_H
