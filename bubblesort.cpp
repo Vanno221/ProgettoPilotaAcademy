@@ -4,6 +4,7 @@ void BubbleSort::sorting(){
     emit startSorting(true);
     int *array;
     int size;
+    double progress = 0.0;
     switch (this->difficulty) {
     case 0: //easy
         size = 100;
@@ -25,22 +26,23 @@ void BubbleSort::sorting(){
     break;
     }
     int length = size;
+    progress = (static_cast<double> (100))/size;
     //start sorting
-    emit result(2);
+    //emit result(progress);
     emit isRunningSorting(true);
     for (int iter =0; iter< length -1; iter++) {
-        int swapped = 0;
         for(int i=0; i< length-1; i++) {
             if (array[i] > array[i+1]) {
                 std::swap(array[i], array[i+1]);
-                swapped = 1;
             }
         }
-        // if no swapping had occoured then list is sorted
-        if (swapped == 0) {
-            break;
-        }
+
+        progress = (static_cast<double> (100))/size;
+        emit result(progress);
+
     }
+    //emit result(progress);
+    qDebug() << progress;
     emit stopSorting(true);
 }
 

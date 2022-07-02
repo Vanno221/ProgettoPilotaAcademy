@@ -59,6 +59,7 @@ void MergeSort::sorting(){
         emit startSorting(true);
         int *array;
         int size;
+        double progress = 0.0;
         switch (this->difficulty) {
         case 0: //easy
             size = 100;
@@ -83,7 +84,8 @@ void MergeSort::sorting(){
        int curr_size;  //current size degli algoritmi di cui fare il merge
        int left_start; // inizio dell'array sx
        emit isRunningSorting(true);
-       emit result(5);
+
+
        // faccio la merge dei due storro array
        for (curr_size=1; curr_size<=n-1; curr_size = 2*curr_size)
        {
@@ -95,7 +97,15 @@ void MergeSort::sorting(){
 
                merge(array, left_start, mid, right_end);
            }
+
+           progress = (static_cast<double> (100))/(curr_size*2);
+           emit result(progress);
        }
 
+       //if (progress < 100)
+         //  progress = 100 - progress;
+
+       emit result(progress);
+       qDebug() << progress;
        emit stopSorting(true);
 }

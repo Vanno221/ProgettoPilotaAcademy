@@ -2,6 +2,7 @@
 #define ABSTRACTALGORITHM_H
 
 #include<QObject>
+#include <QDebug>
 
 class AbstractAlgorithm : public QObject{
     Q_OBJECT
