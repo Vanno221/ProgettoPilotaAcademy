@@ -11,8 +11,11 @@ class PackageFactory : public AbstractPackageFactory
 {
 
 public:
+
     PackageFactory();
+    //void sortingValue(int value) override;
     AbstractAlgorithm* createPackage(int selectionAlgorithm, int difficulty) override;
+
 };
 
 #endif // PACKAGEFACTORY_H

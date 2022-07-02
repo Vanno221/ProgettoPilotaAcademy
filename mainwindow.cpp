@@ -38,6 +38,4 @@ void MainWindow::on_pushButton_StartThread_clicked()
     ui->scrollAreaWidgetContents->layout()->addWidget(labelprogress);
     ui->scrollAreaWidgetContents->layout()->addWidget(progressThread);
 
-
 }
-

@@ -5,19 +5,19 @@ void BubbleSort::sorting(){
     int *array;
     int size;
     switch (this->difficulty) {
-    case 1: //easy
+    case 0: //easy
         size = 100;
         array = new int [size];
         for(int i=0; i<size;i++)
                 array[i] = std::rand()%101;
     break;
-    case 2: //medium
+    case 1: //medium
         size = 1000;
         array = new int [size];
         for(int i=0; i<size;i++)
                 array[i] = std::rand()%101;
     break;
-    case 3: //hard
+    case 2: //hard
         size = 10000;
         array = new int [size];
         for(int i=0; i<size;i++)

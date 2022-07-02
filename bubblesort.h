@@ -6,7 +6,6 @@
 class BubbleSort : public AbstractAlgorithm
 {
 public:
-
     BubbleSort(int difficulty);
     void sorting() override;
     int getDifficulty() override;

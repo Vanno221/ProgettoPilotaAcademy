@@ -9,6 +9,10 @@ class AbstractPackageFactory : public QObject
 
 public slots:
     virtual AbstractAlgorithm* createPackage(int selectionAlgorithm, int difficulty) = 0;
-
+    //virtual void sortingValue(int value) = 0;
+/*
+signals:
+    void updateProgress(int);
+*/
 };
 #endif // ABSTRACTPACKAGEFACTORY_H
