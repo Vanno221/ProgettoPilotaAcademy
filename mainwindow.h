@@ -31,6 +31,7 @@ public:
 
 public slots:
     void on_pushButton_StartThread_clicked();
+    void createProgressBar(int value);
 
 
 signals:
@@ -40,6 +41,7 @@ private:
 
     Ui::MainWindow *ui;
     AbstractPackageFactory *factory;
+    QProgressBar* progressThread;
 
 };
 #endif // MAINWINDOW_H

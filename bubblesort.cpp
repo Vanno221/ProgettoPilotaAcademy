@@ -26,6 +26,7 @@ void BubbleSort::sorting(){
     }
     int length = size;
     //start sorting
+    emit result(2);
     emit isRunningSorting(true);
     for (int iter =0; iter< length -1; iter++) {
         int swapped = 0;

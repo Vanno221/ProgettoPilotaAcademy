@@ -4,11 +4,7 @@ PackageFactory::PackageFactory()
 {
 
 }
-/*
-void AbstractPackageFactory::sortingValue(int value){
-    emit updateProgress(value);
-}
-*/
+
 
 AbstractAlgorithm* PackageFactory::createPackage(int selectionAlgorithm, int difficulty){
 
@@ -42,14 +38,15 @@ AbstractAlgorithm* PackageFactory::createPackage(int selectionAlgorithm, int dif
 
     connect(myThread, &QThread::finished, myThread, &QThread::deleteLater);
 
+    connect(package, &AbstractAlgorithm::result, this, &PackageFactory::updateProgress);
+
     myThread->start();
-
-    //Qui c'è il problema, su questa connect
-
-    //connect(package, &AbstractAlgorithm::result, this, &PackageFactory::sortingValue);
-
 
     return nullptr;
 
+}
+
+void PackageFactory::updateProgress(int value){
+    emit update(value);
 }
 

@@ -56,7 +56,6 @@ void MergeSort::merge(int data[],int p, int q,int r)
 }
 
 void MergeSort::sorting(){
-        emit result(41);
         emit startSorting(true);
         int *array;
         int size;
@@ -84,6 +83,7 @@ void MergeSort::sorting(){
        int curr_size;  //current size degli algoritmi di cui fare il merge
        int left_start; // inizio dell'array sx
        emit isRunningSorting(true);
+       emit result(5);
        // faccio la merge dei due storro array
        for (curr_size=1; curr_size<=n-1; curr_size = 2*curr_size)
        {

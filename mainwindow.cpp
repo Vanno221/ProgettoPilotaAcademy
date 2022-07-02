@@ -11,6 +11,7 @@ MainWindow::MainWindow(AbstractPackageFactory *factoryMain, QWidget *parent)
 
     //SINTASSI: OGGETTO SENDER, METODO DEL SENDER (SIGNALS), OGGETTO A CUI VOGLIAMO PASSARE L'INFORMAZIONE, METODO DELLO SLOT
     connect(this, &MainWindow::pushDataFactory, factory, &AbstractPackageFactory::createPackage);
+    connect(factory, &AbstractPackageFactory::update, this, &MainWindow::createProgressBar);
 
 }
 
@@ -29,7 +30,14 @@ void MainWindow::on_pushButton_StartThread_clicked()
             emit pushDataFactory(ui->comboBox_Algorithm->currentIndex() , radioButtonList.indexOf(singleBox));
     }
 
-    QProgressBar *progressThread = new QProgressBar();
+}
+
+void MainWindow::createProgressBar(int value){
+
+    progressThread = new QProgressBar();
+
+    progressThread->setValue(value);
+    //progressThread->valueChanged(value);
 
     const auto progressBarList = ui->scrollArea->findChildren<QProgressBar*>();
 
