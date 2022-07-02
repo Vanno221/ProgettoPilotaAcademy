@@ -7,7 +7,7 @@ PackageFactory::PackageFactory()
 
 
 AbstractAlgorithm* PackageFactory::createPackage(int selectionAlgorithm, int difficulty){
-    static int id{0};
+    static int id{1};
     AbstractAlgorithm* package = nullptr;
 
     switch (selectionAlgorithm) {

@@ -64,6 +64,7 @@ void MergeSort::sorting(){
         int *array;
         int size;
         double progress = 0.0;
+        double tmp_progress = 0;
         switch (this->difficulty) {
         case 0: //easy
             size = 100;
@@ -101,16 +102,23 @@ void MergeSort::sorting(){
                int right_end = min(left_start + 2*curr_size - 1, n-1);
 
                merge(array, left_start, mid, right_end);
+
+               progress = (static_cast<double> (100))/(size);
+               qDebug() << progress;
+               tmp_progress += progress;
+
+
+               if (tmp_progress >= 1){
+                   qDebug() << tmp_progress;
+                   emit result(tmp_progress);
+                   tmp_progress -= 1;
+               }
            }
 
-           progress = (static_cast<double> (100))/(curr_size*2);
-           emit result(progress);
+
        }
 
-       //if (progress < 100)
-         //  progress = 100 - progress;
        emit statusThread("Terminated Thread: " + id);
        emit result(progress);
        emit stopSorting();
-       qDebug() << progress;
 }

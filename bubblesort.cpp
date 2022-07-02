@@ -7,6 +7,7 @@ void BubbleSort::sorting(){
     int *array;
     int size;
     double progress = 0.0;
+    double tmp_progress = 0;
     switch (this->difficulty) {
     case 0: //easy
         size = 100;
@@ -31,23 +32,34 @@ void BubbleSort::sorting(){
     int length = size;
     progress = (static_cast<double> (100))/size;
 
-    //start sorting
-    //emit result(progress);
-
+    emit result(progress);
     emit statusThread("Running Thread: " + id);
-    for (int iter =0; iter< length -1; iter++) {
+
+    for (int iter =0; iter< length; iter++) {
+
         for(int i=0; i< length-1; i++) {
             if (array[i] > array[i+1]) {
                 std::swap(array[i], array[i+1]);
+                //qDebug() << "Sono dentro il 2 for";
             }
         }
 
-        progress = (static_cast<double> (100))/size;
-        emit result(progress);
+        tmp_progress += progress;
+
+
+        if (tmp_progress >= 1){
+            qDebug() << tmp_progress;
+            emit result(tmp_progress);
+            tmp_progress -= 1;
+        }
+
+
+        //qDebug() << "Sono dentro il 1 for";
+
     }
 
-    //emit result(progress);
-    qDebug() << progress;
+    //qDebug() << "Finito";
+
     emit statusThread("Terminated Thread: " + id);
     emit stopSorting();
 
