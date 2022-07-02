@@ -1,7 +1,7 @@
 #include "bubblesort.h"
 
 void BubbleSort::sorting(){
-    emit startSorting(true);
+    emit statusThread("Start Thread");
     int *array;
     int size;
     double progress = 0.0;
@@ -29,7 +29,7 @@ void BubbleSort::sorting(){
     progress = (static_cast<double> (100))/size;
     //start sorting
     //emit result(progress);
-    emit isRunningSorting(true);
+    emit statusThread("Thread is Running");
     for (int iter =0; iter< length -1; iter++) {
         for(int i=0; i< length-1; i++) {
             if (array[i] > array[i+1]) {
@@ -43,7 +43,9 @@ void BubbleSort::sorting(){
     }
     //emit result(progress);
     qDebug() << progress;
-    emit stopSorting(true);
+    emit statusThread("Thread is Terminated");
+    emit stopSorting();
+
 }
 
 int BubbleSort::getDifficulty(){

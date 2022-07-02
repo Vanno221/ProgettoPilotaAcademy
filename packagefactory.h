@@ -15,6 +15,7 @@ public:
     PackageFactory();
     AbstractAlgorithm* createPackage(int selectionAlgorithm, int difficulty) override;
     void updateProgress(int value) override;
+    void updateStatus(QString status) override;
 
 };
 

@@ -9,9 +9,12 @@ MainWindow::MainWindow(AbstractPackageFactory *factoryMain, QWidget *parent)
 {
     ui->setupUi(this);
 
+    ui_textEdit = findChild<QTextEdit*>("textEdit");
+
     //SINTASSI: OGGETTO SENDER, METODO DEL SENDER (SIGNALS), OGGETTO A CUI VOGLIAMO PASSARE L'INFORMAZIONE, METODO DELLO SLOT
     connect(this, &MainWindow::pushDataFactory, factory, &AbstractPackageFactory::createPackage);
     connect(factory, &AbstractPackageFactory::update, this, &MainWindow::updateProgressBar);
+    connect(factory, &AbstractPackageFactory::updateStatusThread, this, &MainWindow::updateTextEdit);
 
 
 }
@@ -48,3 +51,6 @@ void MainWindow::updateProgressBar(int value){
     progressThread->setValue(progressThread->value() + value);
 }
 
+void MainWindow::updateTextEdit(QString text){
+    ui_textEdit->append(text);
+}

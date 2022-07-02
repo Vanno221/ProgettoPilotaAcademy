@@ -2,6 +2,7 @@
 #define ABSTRACTPACKAGEFACTORY_H
 #include "AbstractAlgorithm.h"
 #include <QThread>
+#include <QString>
 
 class AbstractPackageFactory : public QObject
 {
@@ -10,8 +11,10 @@ class AbstractPackageFactory : public QObject
 public slots:
     virtual AbstractAlgorithm* createPackage(int selectionAlgorithm, int difficulty) = 0;
     virtual void updateProgress(int value) = 0;
+    virtual void updateStatus(QString status) = 0;
 
 signals:
     void update(int);
+    void updateStatusThread(QString);
 };
 #endif // ABSTRACTPACKAGEFACTORY_H

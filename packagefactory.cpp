@@ -39,6 +39,9 @@ AbstractAlgorithm* PackageFactory::createPackage(int selectionAlgorithm, int dif
     connect(myThread, &QThread::finished, myThread, &QThread::deleteLater);
 
     connect(package, &AbstractAlgorithm::result, this, &PackageFactory::updateProgress);
+    connect(package, &AbstractAlgorithm::statusThread, this, &PackageFactory::updateStatus);
+
+    //connect(package, &AbstractAlgorithm::statusThread, this, &PackageFactory::updateStatus);
 
     myThread->start();
 
@@ -48,5 +51,9 @@ AbstractAlgorithm* PackageFactory::createPackage(int selectionAlgorithm, int dif
 
 void PackageFactory::updateProgress(int value){
     emit update(value);
+}
+
+void PackageFactory::updateStatus(QString status){
+    emit updateStatusThread(status);
 }
 

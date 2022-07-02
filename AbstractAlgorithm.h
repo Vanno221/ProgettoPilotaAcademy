@@ -3,6 +3,7 @@
 
 #include<QObject>
 #include <QDebug>
+#include <QString>
 
 class AbstractAlgorithm : public QObject{
     Q_OBJECT
@@ -20,10 +21,9 @@ public slots:
 
 signals:
 
-    void startSorting(bool = false);
-    void isRunningSorting(bool = false);
-    void stopSorting(bool = false);
+    void statusThread(QString status);
     void result(int number);
+    void stopSorting();
 };
 
 #endif // ABSTRACTALGORITHM_H

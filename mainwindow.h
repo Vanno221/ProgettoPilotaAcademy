@@ -8,6 +8,7 @@
 #include <QScrollArea>
 #include <QGridLayout>
 #include <QLabel>
+#include <QTextEdit>
 
 #include "packagefactory.h"
 #include "AbstractAlgorithm.h"
@@ -18,6 +19,7 @@ class QComboBox;
 class QRadioButton;
 class QPushButton;
 class QProgressBar;
+class QTextEdit;
 
 QT_END_NAMESPACE
 
@@ -32,6 +34,7 @@ public:
 public slots:
     void on_pushButton_StartThread_clicked();
     void updateProgressBar(int value);
+    void updateTextEdit(QString text);
 
 
 signals:
@@ -42,5 +45,8 @@ private:
     Ui::MainWindow *ui;
     AbstractPackageFactory *factory;
     QProgressBar* progressThread;
+
+    QTextEdit *ui_textEdit;
+
 };
 #endif // MAINWINDOW_H

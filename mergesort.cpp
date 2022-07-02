@@ -56,7 +56,7 @@ void MergeSort::merge(int data[],int p, int q,int r)
 }
 
 void MergeSort::sorting(){
-        emit startSorting(true);
+        emit statusThread("Start Thread");
         int *array;
         int size;
         double progress = 0.0;
@@ -83,10 +83,11 @@ void MergeSort::sorting(){
        int n = size;
        int curr_size;  //current size degli algoritmi di cui fare il merge
        int left_start; // inizio dell'array sx
-       emit isRunningSorting(true);
 
 
        // faccio la merge dei due storro array
+       emit statusThread("Thread is Running");
+
        for (curr_size=1; curr_size<=n-1; curr_size = 2*curr_size)
        {
            for (left_start=0; left_start<n-1; left_start += 2*curr_size)
@@ -104,8 +105,8 @@ void MergeSort::sorting(){
 
        //if (progress < 100)
          //  progress = 100 - progress;
-
+       emit statusThread("Thread is terminated");
        emit result(progress);
+       emit stopSorting();
        qDebug() << progress;
-       emit stopSorting(true);
 }
