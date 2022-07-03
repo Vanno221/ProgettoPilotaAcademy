@@ -25,22 +25,20 @@ AbstractAlgorithm* PackageFactory::createPackage(int selectionAlgorithm, int dif
             break;
     }
 
-
+    //Instantiate myThread
     QThread *myThread = new QThread();
+    //Move the algorithm package into myThread
     package->moveToThread(myThread);
 
+    //Manage relation between package and myThrea via connect()
     connect(myThread, &QThread::started, package, &AbstractAlgorithm::sorting);
-
     connect(package, &AbstractAlgorithm::stopSorting, package, &AbstractAlgorithm::deleteLater);
-
     connect(package, &AbstractAlgorithm::stopSorting, myThread, &QThread::isFinished);
-
     connect(myThread, &QThread::finished, myThread, &QThread::deleteLater);
 
+    //Manage the update of Progress bar and the status of myThread via Text edit
     connect(package, &AbstractAlgorithm::result, this, &PackageFactory::updateProgress);
     connect(package, &AbstractAlgorithm::statusThread, this, &PackageFactory::updateStatus);
-
-    //connect(package, &AbstractAlgorithm::statusThread, this, &PackageFactory::updateStatus);
 
     myThread->start();
 

@@ -5,6 +5,8 @@
 #include <QDebug>
 #include <QString>
 
+
+
 class AbstractAlgorithm : public QObject{
     Q_OBJECT
 
@@ -14,7 +16,7 @@ private:
 
 public:
     virtual ~AbstractAlgorithm() = default;
-    virtual int getDifficulty() = 0;
+    virtual int getDifficulty() = 0;                        //Getter and Setter
     virtual void setDifficulty(int difficulty) = 0;
 
 public slots:

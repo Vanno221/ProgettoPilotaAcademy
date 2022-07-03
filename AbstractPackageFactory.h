@@ -4,6 +4,7 @@
 #include <QThread>
 #include <QString>
 
+
 class AbstractPackageFactory : public QObject
 {
     Q_OBJECT
@@ -14,7 +15,7 @@ public slots:
     virtual void updateStatus(QString status) = 0;
 
 signals:
-    void update(int);
-    void updateStatusThread(QString);
+    void update(int);                                   //Signal for transmitting progressBar update to the MainWindow
+    void updateStatusThread(QString);                   //Signal for transmitting thread status to the MainWindow
 };
 #endif // ABSTRACTPACKAGEFACTORY_H

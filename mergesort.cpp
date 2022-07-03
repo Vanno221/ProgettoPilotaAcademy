@@ -19,21 +19,23 @@ int MergeSort::min(int a, int b) {
 void MergeSort::merge(int data[],int p, int q,int r)
 {
     int n1,n2,i,j,k;
-    n1=q-p+1;  //dimensione array sx
-    n2=r-q;    //dimensione array dx
+    n1=q-p+1;                                                //left array lenght
+    n2=r-q;                                                  //right array lenght
     int L[n1],R[n2];
-    //inizializzo array sx
+
+    //initialize left array
     for(i=0;i<n1;i++)
     {
         L[i]=data[p+i];
     }
-    //inizializzo array dx
+
+    //initialize right array
     for(j=0;j<n2;j++)
     {
         R[j]=data[q+j+1];
     }
     i=0,j=0;
-    //Confronto e faccio il merge in un nuovo array ordinato
+    //Compare and merge into a new array
     for(k=p;i<n1&&j<n2;k++)
     {
         if(L[i]<R[j])
@@ -45,12 +47,12 @@ void MergeSort::merge(int data[],int p, int q,int r)
             data[k]=R[j++];
         }
     }
-    //Se l'array sx ha più elementi del dx metto gli elementi rimanenti nell'array iniziale
+    //If the left array has more element than the right one, put remained elements into initial array
     while(i<n1)
     {
         data[k++]=L[i++];
     }
-    //Se l'array dx ha più elementi del sx metto gli elementi rimanenti nell'array iniziale
+    //If the right array has more element than the left one, put remained elements into initial array
     while(j<n2)
     {
         data[k++]=R[j++];
@@ -65,6 +67,9 @@ void MergeSort::sorting(){
         int size;
         double progress = 0.0;
         double tmp_progress = 0;
+
+        //Check difficulty and create array
+
         switch (this->difficulty) {
         case 0: //easy
             size = 100;
@@ -86,11 +91,11 @@ void MergeSort::sorting(){
         break;
         }
        int n = size;
-       int curr_size;  //current size degli algoritmi di cui fare il merge
-       int left_start; // inizio dell'array sx
+       int curr_size;  //Current size algorithms of which make the merge
+       int left_start; //Start left array
 
 
-       // faccio la merge dei due storro array
+       // Merge the two arrays
        emit statusThread("Running Thread: " + id);
 
        for (curr_size=1; curr_size<=n-1; curr_size = 2*curr_size)
@@ -104,12 +109,12 @@ void MergeSort::sorting(){
                merge(array, left_start, mid, right_end);
 
                progress = (static_cast<double> (100))/(size);
-               qDebug() << progress;
+               //qDebug() << progress;
                tmp_progress += progress;
 
 
                if (tmp_progress >= 1){
-                   qDebug() << tmp_progress;
+                   //qDebug() << tmp_progress;
                    emit result(tmp_progress);
                    tmp_progress -= 1;
                }
@@ -119,6 +124,5 @@ void MergeSort::sorting(){
        }
 
        emit statusThread("Terminated Thread: " + id);
-       emit result(progress);
        emit stopSorting();
 }

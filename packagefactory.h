@@ -7,6 +7,7 @@
 #include "AbstractPackageFactory.h"
 #include <QDebug>
 
+//Concrete package
 class PackageFactory : public AbstractPackageFactory
 {
 private:

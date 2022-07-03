@@ -30,9 +30,12 @@ void BubbleSort::sorting(){
     }
 
     int length = size;
+    //Keeping trace of algorithm status
     progress = (static_cast<double> (100))/size;
 
     emit result(progress);
+
+    //Emitting id and thread status
     emit statusThread("Running Thread: " + id);
 
     for (int iter =0; iter< length; iter++) {
@@ -48,11 +51,10 @@ void BubbleSort::sorting(){
 
 
         if (tmp_progress >= 1){
-            qDebug() << tmp_progress;
+            //qDebug() << tmp_progress;
             emit result(tmp_progress);
             tmp_progress -= 1;
         }
-
 
         //qDebug() << "Sono dentro il 1 for";
 
