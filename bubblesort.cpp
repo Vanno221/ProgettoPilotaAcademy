@@ -4,7 +4,7 @@ void BubbleSort::sorting(){
 
     QString id = QString::number(this->id);
     emit statusThread("Start Thread: " + id);
-    int *array;
+    int *array = nullptr;
     int size;
     double progress = 0.0;
     double tmp_progress = 0;
@@ -49,13 +49,11 @@ void BubbleSort::sorting(){
 
         tmp_progress += progress;
 
-
         if (tmp_progress >= 1){
             //qDebug() << tmp_progress;
             emit result(tmp_progress);
             tmp_progress -= 1;
         }
-
         //qDebug() << "Sono dentro il 1 for";
 
     }
@@ -64,6 +62,9 @@ void BubbleSort::sorting(){
 
     emit statusThread("Terminated Thread: " + id);
     emit stopSorting();
+
+    if (array != nullptr)
+         delete [] array;
 
 }
 

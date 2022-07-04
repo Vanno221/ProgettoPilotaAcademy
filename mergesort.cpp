@@ -63,7 +63,7 @@ void MergeSort::sorting(){
 
         QString id = QString::number(this->id);
         emit statusThread("Start Thread: " + id);
-        int *array;
+        int *array = nullptr;
         int size;
         double progress = 0.0;
         double tmp_progress = 0;
@@ -123,6 +123,11 @@ void MergeSort::sorting(){
 
        }
 
+
+
        emit statusThread("Terminated Thread: " + id);
        emit stopSorting();
+
+       if (array != nullptr)
+            delete [] array;
 }
