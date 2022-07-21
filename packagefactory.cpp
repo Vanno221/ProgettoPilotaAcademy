@@ -7,6 +7,7 @@ PackageFactory::PackageFactory()
 
 
 AbstractAlgorithm* PackageFactory::createPackage(int selectionAlgorithm, int difficulty){
+
     static int id{1};
     AbstractAlgorithm* package = nullptr;
 
@@ -37,8 +38,10 @@ AbstractAlgorithm* PackageFactory::createPackage(int selectionAlgorithm, int dif
     connect(myThread, &QThread::finished, myThread, &QThread::deleteLater);
 
     //Manage the update of Progress bar and the status of myThread via Text edit
-    connect(package, &AbstractAlgorithm::result, this, &PackageFactory::updateProgress);
-    connect(package, &AbstractAlgorithm::statusThread, this, &PackageFactory::updateStatus);
+    connect(package, &AbstractAlgorithm::result, this, &PackageFactory::update);
+
+
+    connect(package, &AbstractAlgorithm::statusThread, this, &PackageFactory::updateStatusThread);
 
     myThread->start();
 

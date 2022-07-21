@@ -8,21 +8,22 @@ void BubbleSort::sorting(){
     int size;
     double progress = 0.0;
     double tmp_progress = 0;
+
     switch (this->difficulty) {
     case 0: //easy
-        size = 100;
-        array = new int [size];
-        for(int i=0; i<size;i++)
-                array[i] = std::rand()%101;
-    break;
-    case 1: //medium
         size = 1000;
         array = new int [size];
         for(int i=0; i<size;i++)
                 array[i] = std::rand()%101;
     break;
-    case 2: //hard
+    case 1: //medium
         size = 10000;
+        array = new int [size];
+        for(int i=0; i<size;i++)
+                array[i] = std::rand()%101;
+    break;
+    case 2: //hard
+        size = 100000;
         array = new int [size];
         for(int i=0; i<size;i++)
                 array[i] = std::rand()%101;
